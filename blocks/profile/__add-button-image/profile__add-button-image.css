@@ -1,10 +1,10 @@
-/* Стилизизация элемента profile__button-image */
+/* Стилизизация элемента profile__add-button-image */
 .profile__add-button-image {
 
 }
 
 
-
+/* Замена картинки на больший размер, масштабирование привело бы к искажению картинки */
 @media screen and (max-width: 640px) {
   .profile__add-button-image {
     content: url(../../../images/profile/__add-button_big.svg);

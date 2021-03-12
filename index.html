@@ -24,12 +24,14 @@
       <section class="profile">
         <img class="profile__avatar" src="./images/profile/__avatar.png" alt="Аватар">
         <div class="profile__user">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-
+          <!-- profile__edit - дополнительная обертка для выравнивания элементов на 320px -->
+          <div class="profile__edit">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button transparency"><img class="profile__edit-button-image" src="./images/profile/__edit-button.svg" alt="Редактировать"></button>
+          </div>
           <p class="profile__job">Исследователь океана</p>
         </div>
-        <button class="profile__edit-button transparency"><img src="./images/profile/__edit-button.svg" alt="Редактировать"></button>
-        <button class="profile__add-button transparency"><img  class="profile__add-button-image" src="./images/profile/__add-button.svg" alt="Добавить"></button>
+                <button class="profile__add-button transparency"><img  class="profile__add-button-image" src="./images/profile/__add-button.svg" alt="Добавить"></button>
       </section>
 
       <!-- Сетка с карточками
@@ -88,7 +90,7 @@
               </figcaption>
             </figure>
           </li>
-       </ul> -->
+       </ul>-->
 
     </main>
 

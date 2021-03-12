@@ -1,0 +1,6 @@
+/* Стилизизация элемента profile__edit */
+.profile__edit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

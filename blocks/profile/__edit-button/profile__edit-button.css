@@ -1,10 +1,9 @@
 /* Стилизизация элемента profile__edit-button */
 .profile__edit-button {
- margin: 35px 0 0 18px;
+ margin: 0 0 0 18px;
  padding: 0;
  width: 24px;
  height: 24px;
- align-self: flex-start;
  /* Поменял на img так как не работало стандартное затемнение при ховере  */
  /* background-image: url(../../../images/profile/__edit-button.svg); */
  border: none;
@@ -17,3 +16,13 @@
 .profile__edit-button:active, .profile__edit-button:focus {
   outline: none;
 }
+
+
+@media screen and (max-width: 640px) {
+  .profile__edit-button {
+
+    margin: 0 0 0 12px;
+    width: 18px;
+    height: 18px;
+  }
+  }
