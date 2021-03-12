@@ -1,0 +1,20 @@
+if [$1 = '']; then 
+  echo "Пропущен параметр"
+  exit 0;
+fi
+block=$1
+echo Выполнение скрипта для узла $2
+echo Создаем папку элемента
+element=$2
+cd ./$block
+mkdir $element
+cd $element
+echo Создаем CSS элемента
+touch ${block}${element}.css
+echo "/* Стилизизация элемента "${block}${element}" */">>${block}${element}.css
+echo "."${block}${element}" {">>${block}${element}.css
+echo "  ">>${block}${element}.css
+echo "}">>${block}${element}.css
+cd ..
+cd ..
+

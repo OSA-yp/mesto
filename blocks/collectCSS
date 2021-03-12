@@ -1,0 +1,3 @@
+cd ..
+find -name *.css -print0 | xargs -I {} -r0 echo "@import url(."{}");">./blocks/allCSS.txt
+

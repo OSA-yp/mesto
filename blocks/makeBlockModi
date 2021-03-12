@@ -1,0 +1,21 @@
+if [$1 = '']; then 
+  echo "Пропущен параметр"
+  exit 0;
+fi
+block=$1
+echo Выполнение скрипта для узла $3
+echo Создаем папку элемента
+key=$2
+value=$3
+cd ./$block
+mkdir $key
+cd $key
+echo Создаем CSS модификатора блока
+touch ${block}${key}${value}.css
+echo "/* Стилизизация модификатора "${block}${key}${value}" */">>${block}${key}${value}.css 
+echo "."${block}${key}${value}" {">>${block}${key}${value}.css
+echo "  ">>${block}${key}${value}.css
+echo "}">>${block}${key}${value}.css
+cd ..
+cd ..
+

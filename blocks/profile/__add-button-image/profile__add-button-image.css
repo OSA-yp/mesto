@@ -1,0 +1,12 @@
+/* Стилизизация элемента profile__button-image */
+.profile__add-button-image {
+
+}
+
+
+
+@media screen and (max-width: 640px) {
+  .profile__add-button-image {
+    content: url(../../../images/profile/__add-button_big.svg);
+  }
+  }

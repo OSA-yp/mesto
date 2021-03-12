@@ -1,0 +1,15 @@
+/* Стилизизация блока page */
+.page {
+
+  /* 1280 - поля по 2 * 200px*/
+  max-width: calc(1280px - 400px);
+  margin: 0 auto;
+
+}
+
+
+@media screen and (max-width: 640px) {
+  .page {
+    max-width: calc(100% - 19px*2);
+  }
+  }

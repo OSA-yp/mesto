@@ -1,0 +1,24 @@
+/* Стилизизация блока profile */
+.profile {
+  padding-top: 40px;
+  width: 100%;
+  display: grid;
+  /* Размер грида по макету, объекты + поля между ними */
+  grid-template-columns: 150px 294px 42px auto;
+  align-items: center;
+}
+
+
+
+@media screen and (max-width: 640px) {
+  .profile {
+    padding-top: 42px;
+      /* Размер 1 колонка */
+    grid-template-columns: 100%;
+      /* Размер строк по макету, объекты + поля между ними */
+    grid-template-rows: 146px 90px auto auto;
+    align-items: flex-start;
+    justify-items: center;
+  }
+  }
+

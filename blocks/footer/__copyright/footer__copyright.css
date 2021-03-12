@@ -1,0 +1,11 @@
+/* Стилизизация элемента footer__copyright */
+.footer__copyright {
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  padding: 66px 0 60px 0;
+  margin: 0;
+}

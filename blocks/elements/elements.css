@@ -1,0 +1,11 @@
+/* Стилизизация блока elements */
+.elements {
+  display: grid;
+  grid-template-columns: repeat(3, 282px);
+  grid-row-gap: 20px;
+  grid-column-gap: 17px;
+  background-color: cadetblue;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

@@ -1,0 +1,9 @@
+/* Общий внешний вид для ссылок*/
+.transparency {
+  opacity: 1;
+}
+
+.transparency:hover {
+  transition: opacity 0.2s ease;
+  opacity: 0.6;
+}

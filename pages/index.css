@@ -1,0 +1,38 @@
+@import url(../vendor/normalize.css);
+
+/* Подключаем шрифты */
+@import url(../vendor/fonts/fonts.css);
+
+/* Основной контент */
+@import url(../blocks/body/body.css);
+@import url(../blocks/content/content.css);
+@import url(../blocks/page/page.css);
+
+/* Заголовок */
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
+/* Профиль */
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile//__user/profile__user.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__job/profile__job.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__add-button-image/profile__add-button-image.css);
+
+/* Сетка карточек */
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__caption/element__caption.css);
+@import url(../blocks/element/__like/element__like.css);
+@import url(../blocks/element/__photo/element__photo.css);
+@import url(../blocks/element/__description/element__description.css);
+
+/* Подвал страницы */
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+
+/* Прозрачность, из прошлой работы */
+@import url(../blocks/transparency/transparency.css);
