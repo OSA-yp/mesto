@@ -4,8 +4,24 @@
   grid-template-columns: repeat(3, 282px);
   grid-row-gap: 20px;
   grid-column-gap: 17px;
-  background-color: cadetblue;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 51px 0 0 0;
   list-style: none;
 }
+
+
+@media screen and (max-width: 890px) {
+  .elements {
+    grid-template-columns: repeat(2, 282px);
+  }
+  }
+
+
+
+
+@media screen and (max-width: 640px) {
+  .elements {
+    grid-template-columns: 282px;
+    padding: 36px 0 0 0;
+  }
+  }

@@ -1,4 +1,6 @@
 /* Стилизизация элемента element__like */
 .element__like {
-  
+  margin: 0;
+  padding: 0 20px 0 0;
+  cursor:pointer;
 }

@@ -6,4 +6,15 @@
   margin: 0;
   padding: 0;
 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  /* Так как в прошлой работе советовали исвользовать тэг figure, то использовал его и здесь, но не смог найти решение с зазором между картиной и caption, вынуждено делал отрицательный margin */
+  margin-top: -4px;
 }
+
