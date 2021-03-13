@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Коллекция фотографий из разных мест в России">
-  <meta name="keywords" content="Фото, места, туризм, прироа, фотографии, коллекция, путешествия, Россия">
+  <meta name="keywords" content="Фото, места, туризм, природа, фотографии, коллекция, путешествия, Россия">
   <meta name="author" content="Сергей Окунь">
   <title>Mesto Russia</title>
   <link rel="stylesheet" href="./pages/index.css">
-  <!-- версия от хх.03.2021 хх-хх -->
+  <!-- версия от 13.03.2021 13-00 -->
 </head>
 <body  class="body">
   <div class="page">
@@ -27,15 +27,16 @@
           <!-- profile__edit - дополнительная обертка для выравнивания элементов на 320px -->
           <div class="profile__edit">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <input type="button" class="profile__edit-button transparency">
+              <input type="button" class="profile__edit-button transparency" value=" ">
           </div>
           <p class="profile__job">Исследователь океана</p>
         </div>
-        <input type="button" class="profile__add-button transparency">
+        <input type="button" class="profile__add-button transparency"  value=" ">
       </section>
 
        <!-- Сетка с карточками-->
-      <ul class="elements">
+      <section>
+        <ul class="elements">
           <li >
             <figure class="element">
               <img class="element__photo" src="./images/elements/__01-roman-trifonov-msCiF8bXy2M-unsplash-kalinigrad.jpg" alt="Фото Калининград">
@@ -90,7 +91,8 @@
               </figcaption>
             </figure>
           </li>
-       </ul>
+        </ul>
+       </section>
 
     </main>
 
@@ -100,8 +102,7 @@
     </footer>
 
      <!-- Форма редактирования профиля -->
-    <div class="popup">
-     <div class="popup__overlay"></div>
+    <div class="popup popup_hiden">
      <form class="popup__form">
         <p class="popup__title">Редактировать профиль</p>
         <input class="popup__name" type="text" value="Имя" required >
@@ -110,9 +111,7 @@
         <div class="popup__close transparency"></div>
       </form>
     </div>
-
-
   </div>
-
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
