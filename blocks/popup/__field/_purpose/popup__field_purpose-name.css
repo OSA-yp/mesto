@@ -1,0 +1,13 @@
+/* Стилизизация модификатора popup__field_purpose-name */
+.popup__field_purpose-name {
+  margin: 54px 36px 0 36px;
+}
+
+
+
+@media screen and (max-width: 640px) {
+  .popup__field_purpose-name {
+    margin: 75px 22px 0 22px;
+
+}
+}

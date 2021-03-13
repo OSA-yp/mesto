@@ -1,5 +1,10 @@
 /* Стилизизация элемента element__like */
 .element__like {
-  margin: 0;
-  padding: 0 20px 0 0;
+  margin: 0 20px 0 0;
+  padding: 0;
+  box-sizing: content-box;
+  border: none;
+  background-color: #fff;
+  width: 22px;
+  height: 19px;
 }

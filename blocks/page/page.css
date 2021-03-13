@@ -10,7 +10,7 @@
 }
 
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 940px) {
   .page {
     max-width: calc(100% - 19px*2);
   }

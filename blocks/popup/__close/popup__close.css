@@ -5,10 +5,17 @@
   right: -40px;
   background-image: url(../../../images/popup/__close.svg);
   background-size: cover;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
   transform: rotate(45deg);
   width: 40px;
   height: 40px;
 }
+
+/* Убираем выделение кнопки при фокусе и активации, для соответствия макету */
+.popup__close:active, .popup__close:focus {
+  outline: none;
+ }
 
 
 
