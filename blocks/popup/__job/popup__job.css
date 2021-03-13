@@ -1,0 +1,28 @@
+/* Стилизизация элемента popup__job */
+.popup__job {
+  margin: 30px 36px 48px 36px;
+  padding: 0 0 13px 0;
+
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+
+/* Убираем выделение при фокусе и активации, для соответствия макету */
+.popup__job:active, .popup__job:focus {
+  outline: none;
+ }
+
+
+ @media screen and (max-width: 640px) {
+  .popup__job {
+    margin: 30px 22px 45px 22px;
+
+}
+}

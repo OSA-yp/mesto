@@ -1,0 +1,22 @@
+/* Стилизизация элемента popup__form */
+.popup__form {
+  background-color: #fff;
+  width: 430px;
+  height: 330px;
+  border-radius: 10px;
+  position: relative;
+  /* transform: translate(50% 50%); */
+  margin: 195px auto 0 auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media screen and (max-width: 640px) {
+  .popup__form {
+    width: 282px;
+    height: 322px;
+    margin: 123px auto 0 auto;
+  }
+}

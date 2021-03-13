@@ -21,9 +21,18 @@
 @import url(../blocks/profile/__job/profile__job.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
-@import url(../blocks/profile/__add-button-image/profile__add-button-image.css);
-@import url(../blocks/profile/__edit-button-image/profile__edit-button-image.css);
 
+
+/* Форма редактирования профиля */
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_hiden/popup_hiden.css);
+@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__job/popup__job.css);
+@import url(../blocks/popup/__name/popup__name.css);
+@import url(../blocks/popup/__overlay/popup__overlay.css);
+@import url(../blocks/popup/__save/popup__save.css);
+@import url(../blocks/popup/__title/popup__title.css);
 
 /* Сетка карточек */
 @import url(../blocks/elements/elements.css);

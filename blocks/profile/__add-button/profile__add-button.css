@@ -8,24 +8,24 @@
 
   border: none;
   background-color: black;
-  cursor:pointer;
+  background-image: url(../../../images/profile/__add-button.svg);
+  background-size: cover;
+
 }
-
-
-
 
 /* Убираем выделение кнопки при фокусе и активации, для соответствия макету */
 .profile__add-button:active, .profile__add-button:focus {
  outline: none;
 }
 
-
-
-
 @media screen and (max-width: 640px) {
   .profile__add-button {
     justify-self: center;
     width: 282px;
+
+    /* Замена картинки на больший размер, масштабирование привело бы к искажению картинки */
+    background-image: url(../../../images/profile/__add-button_big.svg);
   }
   }
+
 

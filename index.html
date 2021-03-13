@@ -27,14 +27,14 @@
           <!-- profile__edit - дополнительная обертка для выравнивания элементов на 320px -->
           <div class="profile__edit">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button transparency"><img class="profile__edit-button-image" src="./images/profile/__edit-button.svg" alt="Редактировать"></button>
+              <input type="button" class="profile__edit-button transparency">
           </div>
           <p class="profile__job">Исследователь океана</p>
         </div>
-                <button class="profile__add-button transparency"><img  class="profile__add-button-image" src="./images/profile/__add-button.svg" alt="Добавить"></button>
+        <input type="button" class="profile__add-button transparency">
       </section>
 
-      <!-- Сетка с карточками-->
+       <!-- Сетка с карточками-->
       <ul class="elements">
           <li >
             <figure class="element">
@@ -99,6 +99,20 @@
       <p class="footer__copyright">&COPY; 2021 Mesto Russia</p>
     </footer>
 
+     <!-- Форма редактирования профиля -->
+    <div class="popup">
+     <div class="popup__overlay"></div>
+     <form class="popup__form">
+        <p class="popup__title">Редактировать профиль</p>
+        <input class="popup__name" type="text" value="Имя" required >
+        <input class="popup__job" type="text" value="Профессия" required>
+        <input class="popup__save transparency" type="submit" value="Сохранить">
+        <div class="popup__close transparency"></div>
+      </form>
+    </div>
+
+
   </div>
+
 </body>
 </html>

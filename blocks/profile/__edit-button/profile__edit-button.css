@@ -4,11 +4,10 @@
  padding: 0;
  width: 24px;
  height: 24px;
- /* Поменял на img так как не работало стандартное затемнение при ховере  */
- /* background-image: url(../../../images/profile/__edit-button.svg); */
  border: none;
  background-color: black;
- cursor:pointer;
+ background-image: url(../../../images/profile/__edit-button.svg);
+ background-size: cover;
 }
 
 
@@ -20,7 +19,6 @@
 
 @media screen and (max-width: 640px) {
   .profile__edit-button {
-
     margin: 0 0 0 12px;
     width: 18px;
     height: 18px;

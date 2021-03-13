@@ -1,0 +1,30 @@
+/* Стилизизация элемента popup__name */
+.popup__name {
+  margin: 54px 36px 0 36px;
+  padding: 0 0 13px 0;
+
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+
+/* Убираем выделение при фокусе и активации, для соответствия макету */
+.popup__name:active, .popup__name:focus {
+  outline: none;
+ }
+
+
+
+
+@media screen and (max-width: 640px) {
+  .popup__name {
+    margin: 75px 22px 0 22px;
+
+}
+}
