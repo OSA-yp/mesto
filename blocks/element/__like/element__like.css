@@ -8,3 +8,10 @@
   width: 22px;
   height: 19px;
 }
+
+
+
+/* Убираем выделение кнопки при фокусе и активации, для соответствия макету */
+.element__like:active, .element__like:focus {
+  outline: none;
+}
