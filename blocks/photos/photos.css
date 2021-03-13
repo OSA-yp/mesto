@@ -1,0 +1,4 @@
+/* Стилизизация блока photos */
+.photos {
+  display: flex;
+}
