@@ -25,13 +25,13 @@ function openPopup(){
   let popup = document.querySelector('.popup');
 
   let nameForEdit = document.querySelector('.profile__name');
-  let nameInPopup = document.querySelector('.popup__field_purpose-name');
+  let nameInPopup = document.querySelector('.popup__field_purpose_name');
 
   nameInPopup.value = nameForEdit.textContent;
 
 
   let jobForEdit = document.querySelector('.profile__job');
-  let jobInPopup = document.querySelector('.popup__field_purpose-job');
+  let jobInPopup = document.querySelector('.popup__field_purpose_job');
 
   jobInPopup.value = jobForEdit.textContent;
 
@@ -45,13 +45,13 @@ function savePopup(){
   let popup = document.querySelector('.popup');
 
   let nameForEdit = document.querySelector('.profile__name');
-  let nameInPopup = document.querySelector('.popup__field_purpose-name');
+  let nameInPopup = document.querySelector('.popup__field_purpose_name');
 
   nameForEdit.textContent = nameInPopup.value;
 
 
   let jobForEdit = document.querySelector('.profile__job');
-  let jobInPopup = document.querySelector('.popup__field_purpose-job');
+  let jobInPopup = document.querySelector('.popup__field_purpose_job');
 
   jobForEdit.textContent = jobInPopup.value;
 

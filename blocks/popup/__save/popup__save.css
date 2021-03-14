@@ -13,6 +13,9 @@
   line-height: 22px;
   text-align: center;
   color: #FFFFFF;
+
+  opacity: 1;
+  cursor:pointer; /* всегда на таких объектах курсор как рука */
 }
 
 
@@ -26,4 +29,9 @@
     font-size: 14px;
     line-height: 17px;
 }
+}
+
+.popup__save:hover {
+  transition: opacity 0.2s ease;
+  opacity: 0.8;
 }
