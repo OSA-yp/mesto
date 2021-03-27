@@ -7,6 +7,9 @@
   background-color: #fff;
   width: 22px;
   height: 19px;
+  background-size: cover;
+  background-image: url('../../../images/elements/__like_unactive.svg');
+
 }
 
 

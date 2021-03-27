@@ -37,60 +37,6 @@
        <!-- Сетка с карточками-->
       <section class="photos">
         <ul class="elements">
-          <li >
-            <figure class="element">
-              <img class="element__photo" src="./images/elements/__01-roman-trifonov-msCiF8bXy2M-unsplash-kalinigrad.jpg" alt="Фото Калининград">
-              <figcaption class="element__caption">
-               <p class="element__text">Калининград</p>
-               <button class="element__like transparency" type="button"><img class="element__like transparency"  src="./images/elements/__like_unactive.svg" alt="like"></button>
-              </figcaption>
-            </figure>
-          </li>
-          <li >
-            <figure class="element">
-              <img class="element__photo" src="./images/elements/__02-evgeny-nelmin-GIGpT9VzKjo-unsplash-vladivostok.jpg" alt="Фото Владивосток">
-              <figcaption class="element__caption">
-               <p class="element__text">Владивосток</p>
-               <button class="element__like transparency" type="button"><img class="element__like transparency"  src="./images/elements/__like_unactive.svg" alt="like"></button>
-              </figcaption>
-            </figure>
-          </li>
-          <li >
-            <figure class="element">
-              <img class="element__photo" src="./images/elements/__03-mikhail-shuvalov-h3W99kOLb_Y-unsplash-Kovarditskoye.jpg" alt="Фото Ковардицкое">
-              <figcaption class="element__caption">
-               <p class="element__text">Ковардицкое поселение</p>
-               <button class="element__like transparency" type="button"><img class="element__like transparency"  src="./images/elements/__like_unactive.svg" alt="like"></button>
-              </figcaption>
-            </figure>
-          </li>
-          <li >
-            <figure class="element">
-              <img class="element__photo" src="./images/elements/__04-radik-sitdikov-HKKjMTBz3NU-unsplash-moskva.jpg" alt="Фото Москва">
-              <figcaption class="element__caption">
-               <p class="element__text">Москва</p>
-               <button class="element__like transparency" type="button"><img class="element__like transparency"  src="./images/elements/__like_unactive.svg" alt="like"></button>
-              </figcaption>
-            </figure>
-          </li>
-          <li >
-            <figure class="element">
-              <img class="element__photo" src="./images/elements/__05-usgs-nF1FvXdJL7o-unsplash-kamchatka.jpg" alt="Фото Камчатка">
-              <figcaption class="element__caption">
-               <p class="element__text">Камчатка</p>
-               <button class="element__like transparency" type="button"><img class="element__like transparency"  src="./images/elements/__like_unactive.svg" alt="like"></button>
-              </figcaption>
-            </figure>
-          </li>
-          <li >
-            <figure class="element">
-              <img class="element__photo" src="./images/elements/__06-dmitriy-koryas-AqyjpvoSjcA-unsplash-sochi.jpg" alt="Фото Сочи">
-              <figcaption class="element__caption">
-               <p class="element__text">Сочи</p>
-               <button class="element__like transparency" type="button"><img class="element__like transparency"  src="./images/elements/__like_unactive.svg" alt="like"></button>
-              </figcaption>
-            </figure>
-          </li>
         </ul>
        </section>
 
@@ -102,16 +48,54 @@
     </footer>
 
      <!-- Форма редактирования профиля -->
-    <div class="popup popup_hiden">
-     <form class="popup__form" name="profileform">
+    <div class="popup" id="profileEditPopup">
+     <form class="popup__form" name="profileEditForm" id="profileEditForm">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__field popup__field_purpose_name" type="text" value="Имя" name ="profilename" required >
-        <input class="popup__field popup__field_purpose_job" type="text" value="Профессия" name ="profilejob"  required>
-        <input class="popup__save" type="submit" value="Сохранить">
+        <input class="popup__field" id="popupProfileName" type="text" value="Имя" name ="name" required >
+        <input class="popup__field" id="popupProfileJob" type="text" value="Профессия" name ="job"  required>
+        <input class="popup__save" id="saveProfileEditPopup" type="submit" value="Сохранить">
         <button class="popup__close transparency" type="button"></button>
       </form>
     </div>
+
+    <!-- Форма добавления елемента-карточки -->
+    <div class="popup" id="addPlacePopup">
+      <form class="popup__form" name="addPlaceForm" id="addPlaceForm">
+        <h2 class="popup__title">Новое место</h2>
+        <input class="popup__field" id="popupAddPlaceName" type="text" placeholder="Название" name ="name" required >
+        <input class="popup__field" id="popupAddPlaceLink" type="text" placeholder="Ссылка на картинку" name ="link"  required>
+        <input class="popup__save" id="saveAddPlacePopup" type="submit" value="Создать">
+        <button class="popup__close transparency" type="button"></button>
+      </form>
+    </div>
+
+    <!-- Форма просмотра фотографии -->
+    <div class="popup" id="elementViewPopup">
+      <div class="popup__elementview">
+        <figure class="popup__photoview">
+          <img class="popup__image" src="https://i.pinimg.com/736x/8b/f6/6b/8bf66b6e0bfb8d2536c40a62cf6091bd.jpg" alt="Рыба Окунь">
+          <figcaption class="popup__caption">Рыба Окунь</figcaption>
+        </figure>
+        <button class="popup__close popup__close_isview transparency" type="button"></button>
+      </div>
+    </div>
   </div>
+
+
+  <!-- Шаблон элемента-карточки -->
+  <template id="card">
+    <li >
+      <figure class="element">
+        <button class="element__delete transparency" type="button"><img class="element__delete transparency"  src="./images/elements/__trash.svg" alt="trash"></button>
+        <img class="element__photo" src="" alt="">
+        <figcaption class="element__caption">
+          <p class="element__text"></p>
+          <button class="element__like transparency" type="button"></button>
+        </figcaption>
+      </figure>
+    </li>
+  </template>
+
   <script src="./scripts/index.js"></script>
 </body>
 </html>

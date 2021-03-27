@@ -1,0 +1,4 @@
+/* Стилизизация модификатора element__like_active */
+.element__like_active {
+  background-image: url('../../../../images/elements/__like_active.svg');
+}

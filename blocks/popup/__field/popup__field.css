@@ -1,6 +1,8 @@
 /* Стилизизация элемента popup__field */
 .popup__field {
-  padding: 0 0 13px 0;
+  padding: 0;
+  margin: 0px 36px 30px 36px;
+
   font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -18,3 +20,10 @@
  }
 
 
+
+@media screen and (max-width: 640px) {
+  .popup__field {
+    margin: 0px 22px 30px 22px;
+
+  }
+}

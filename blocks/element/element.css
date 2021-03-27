@@ -1,5 +1,5 @@
 /* Стилизизация блока element */
 .element {
   margin: 0;
-
+  position: relative;
 }
