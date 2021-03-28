@@ -1,14 +1,8 @@
 /* Стилизизация элемента popup__elementview */
 .popup__elementview {
   position: relative;
-  margin: 95px auto auto auto;
+  margin: 0;
   max-width: 75vw;
   max-height: 75vh;
 }
 
-@media screen and (max-width: 640px) {
-  .popup__elementview {
-    /*width: 240px;*/
-    margin: 123px auto auto auto;
-  }
-}
