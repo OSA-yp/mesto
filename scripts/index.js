@@ -144,23 +144,18 @@ function closePopup(popup){
 // заполнить попап редактирования профиля
 const nameForEdit = document.querySelector('.profile__name');
 const jobForEdit = document.querySelector('.profile__job');
+const nameInPopup = document.querySelector('#popupProfileName');
+const jobInPopup = document.querySelector('#popupProfileJob');
 function fillProfileEditPopup(){
-  const nameInPopup = document.querySelector('#popupProfileName');
   nameInPopup.value = nameForEdit.textContent;
-
-  const jobInPopup = document.querySelector('#popupProfileJob');
   jobInPopup.value = jobForEdit.textContent;
 }
 
 // сохранить и закрыть попап редактирования профиля
 const profileEditPopup = document.querySelector('#profileEditPopup');
 function saveProfileEditPopup(){
-  const nameInPopup = document.querySelector('#popupProfileName');
   nameForEdit.textContent = nameInPopup.value;
-
-  const jobInPopup = document.querySelector('#popupProfileJob');
   jobForEdit.textContent = jobInPopup.value;
-
   closePopup(profileEditPopup);
 }
 
