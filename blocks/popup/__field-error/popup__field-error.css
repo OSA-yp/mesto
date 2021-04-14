@@ -1,0 +1,11 @@
+/* Стилизизация элемента popup__field-error */
+.popup__field-error  {
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+  margin: 0;
+  padding: 0;
+}

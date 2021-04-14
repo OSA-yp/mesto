@@ -51,19 +51,26 @@
     <div class="popup" id="profileEditPopup">
      <form class="popup__form" name="profileEditForm" id="profileEditForm">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__field" id="popupProfileName" type="text" value="Имя" name ="name" required >
-        <input class="popup__field" id="popupProfileJob" type="text" value="Профессия" name ="job"  required>
+       <div class="">
+         <input class="popup__field"  id="popupProfileName" type="text" value="Имя" name ="name" required minlength="2" maxlength="40">
+         <span class="popup__field-error" id="popupProfileNameError"></span>
+       </div>
+
+        <input class="popup__field" id="popupProfileJob" type="text" value="Профессия" name ="job" required minlength="20" maxlength="200">
+        <span class="popup__field-error" id="popupProfileJobError"></span>
         <input class="popup__save" id="saveProfileEditPopup" type="submit" value="Сохранить">
         <button class="popup__close transparency" type="button"></button>
       </form>
     </div>
 
-    <!-- Форма добавления елемента-карточки -->
+    <!-- Форма добавления элемента-карточки -->
     <div class="popup" id="addPlacePopup">
       <form class="popup__form" name="addPlaceForm" id="addPlaceForm">
         <h2 class="popup__title">Новое место</h2>
-        <input class="popup__field" id="popupAddPlaceName" type="text" placeholder="Название" name ="name" required >
-        <input class="popup__field" id="popupAddPlaceLink" type="text" placeholder="Ссылка на картинку" name ="link"  required>
+        <input class="popup__field" id="popupAddPlaceName" type="text" placeholder="Название" name ="name" required minlength="2" maxlength="30">
+        <span class="popup__field-error" id="popupAddPlaceNameError"></span>
+        <input class="popup__field popup__field_with-error" id="popupAddPlaceLink" type="url" placeholder="Ссылка на картинку" name ="link" required>
+        <span class="popup__field-error" id="popupAddPlaceLinkError"></span>
         <input class="popup__save" id="saveAddPlacePopup" type="submit" value="Создать">
         <button class="popup__close transparency" type="button"></button>
       </form>
@@ -97,5 +104,6 @@
   </template>
 
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 </html>

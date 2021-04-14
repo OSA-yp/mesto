@@ -1,11 +1,29 @@
 
 /// Обработчики на основной странице
-// событие по клик на кнопке редактирования профиля
 const popup = document.querySelector('#profileEditPopup');
+// событие по клик на кнопке редактирования профиля
 const editButton = document.querySelector('.profile__edit-button');
 editButton.addEventListener('click', function () {
   fillProfileEditPopup();
   openPopup(popup);
+});
+
+
+// обработка закрытия попапов по эскейп
+const popupList = Array.from(document.querySelectorAll('.popup'))
+popupList.forEach((singlePopup) => {
+  singlePopup.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+      closePopup(singlePopup);
+    }
+  });
+// обработка закрытия попапов по клику вне формы
+  singlePopup.addEventListener('click', function (evt) {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(singlePopup);
+    };
+  });
+
 });
 
 // событие по клик на кнопке +
@@ -195,4 +213,5 @@ function openElementPhotoPopup(name, link) {
 
   openPopup(elementViewPopup);
 }
+
 
