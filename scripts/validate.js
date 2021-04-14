@@ -14,11 +14,11 @@ function hideInputError(formElement, inputElement, inputErrorClass) {
 }
 
 // Проверка валидности отдельного input
-function checkInputValidity(formElement, inputElement, inputErrorClass, errorClass) {
+function checkInputValidity(formElement, inputElement, inputErrorClass) {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass);
   } else {
-    hideInputError(formElement, inputElement, inputErrorClass, errorClass);
+    hideInputError(formElement, inputElement, inputErrorClass);
   }
 }
 
@@ -40,7 +40,7 @@ const enableValidation = (settings) => {
     const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
     inputList.forEach((popupField) => {
       popupField.addEventListener('input', function () {
-        checkInputValidity(formElement, popupField, settings.inputErrorClass, settings.errorClass);
+        checkInputValidity(formElement, popupField, settings.inputErrorClass);
         toggleButtonState(inputList, buttonElement, settings.inactiveButtonClass);
       });
       // установка состояния кнопки формы по-умолчанию
@@ -75,4 +75,14 @@ function toggleButtonState(inputList, buttonElement, inactiveButtonClass){
   } else {
     buttonElement.classList.remove(inactiveButtonClass);
   }
+}
+
+// Сброс сообщений об ошибках на форме (например при открытии)
+function clearFormErrors(popup) {
+  const formElement = popup.querySelector('.popup__form')
+  const inputList = Array.from(formElement.querySelectorAll('.popup__field'));
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, 'popup__field_with-error')
+  });
+
 }

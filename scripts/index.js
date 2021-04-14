@@ -21,7 +21,7 @@ popupList.forEach((singlePopup) => {
   singlePopup.addEventListener('click', function (evt) {
     if (evt.target.classList.contains('popup_opened')) {
       closePopup(singlePopup);
-    };
+    }
   });
 
 });
@@ -151,6 +151,7 @@ function addCard(newCard) {
 
 // открыть любой попап
 function openPopup(popup) {
+  clearFormErrors(popup);
   popup.classList.add('popup_opened');
 }
 
