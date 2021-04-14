@@ -1,19 +1,15 @@
 
 // Показать спан с ошибкой
-function showInputError(formElement, inputElement, errorMessage, inputErrorClass, errorClass) {
+function showInputError(formElement, inputElement, errorMessage, inputErrorClass) {
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
   errorElement.textContent = errorMessage;
   inputElement.classList.add(inputErrorClass);
-  // errorElement.classList.add(errorClass);
-  console.log('inputElement.classList ---- ' + inputElement.classList);
-  console.log('errorElement.classList ---- ' + errorElement.classList);
 }
 
 // Скрыть спан с ошибкой
-function hideInputError(formElement, inputElement, inputErrorClass, errorClass) {
+function hideInputError(formElement, inputElement, inputErrorClass) {
   const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
   inputElement.classList.remove(inputErrorClass);
-  //errorElement.classList.remove(errorClass);
   errorElement.textContent = '';
 }
 
@@ -25,15 +21,6 @@ function checkInputValidity(formElement, inputElement, inputErrorClass, errorCla
     hideInputError(formElement, inputElement, inputErrorClass, errorClass);
   }
 }
-
-//
-// formSelector: '.popup__form',  // форма
-//   inputSelector: '.popup__field',  // инпут
-//   submitButtonSelector: '.popup__save',   // кнопка
-//   inactiveButtonClass: 'popup__save_inactive',  // модификатор неактивной кнопки
-//   inputErrorClass: 'popup__field_with-error',  // инпут с ошибкой (подчеркивание)
-//   errorClass: 'popup__field-error'  // ошибка под полем инпута
-
 
 
 // Навешивание событий сабмитов на формы и перебор полей ввода
@@ -71,8 +58,8 @@ enableValidation({
   submitButtonSelector: '.popup__save',   // кнопка
   inactiveButtonClass: 'popup__save_inactive',  // модификатор неактивной кнопки
   inputErrorClass: 'popup__field_with-error',  // инпут с ошибкой (подчеркивание)
-  errorClass: 'popup__field-error'  // ошибка под полем инпута
 });
+// errorClass: 'popup__field-error'  // ошибка под полем инпута (убрал, так как имя вычисляется)
 
 // Проверка общего статуса валидности по всем полям
 function hasInvalidInput(inputList) {

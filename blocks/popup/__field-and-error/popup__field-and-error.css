@@ -1,0 +1,11 @@
+/* Стилизизация элемента popup__field-with-error */
+.popup__field-and-error {
+  padding: 0;
+  margin: 0 0 30px 0;
+  /*background-color: aqua;*/
+  display: flex;
+  flex-direction: column;
+}
+
+
+

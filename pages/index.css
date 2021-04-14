@@ -38,6 +38,7 @@
 @import url(../blocks/popup/__save/_inactive/popup__save_inactive.css);
 @import url(../blocks/popup/__field-error/popup__field-error.css);
 @import url(../blocks/popup/__field/_with-error/popup__field_with-error.css);
+@import url(../blocks/popup/__field-and-error/popup__field-and-error.css);
 
 /* Сетка карточек */
 @import url(../blocks/photos/photos.css);
