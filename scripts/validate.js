@@ -79,6 +79,10 @@ function toggleButtonState(inputList, buttonElement, inactiveButtonClass){
 
 // Сброс сообщений об ошибках на форме (например при открытии)
 function clearFormErrors(popup) {
+  // проверяем, а есть ли вообще форма
+  if (popup.querySelectorAll('.popup__form').length === 0) {
+    return;
+  }
   const formElement = popup.querySelector('.popup__form')
   const inputList = Array.from(formElement.querySelectorAll('.popup__field'));
   inputList.forEach((inputElement) => {

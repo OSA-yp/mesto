@@ -8,22 +8,14 @@ editButton.addEventListener('click', function () {
   openPopup(popup);
 });
 
-
-// обработка закрытия попапов по эскейп
+// обработка закрытия попапов по клику вне формы
 const popupList = Array.from(document.querySelectorAll('.popup'))
 popupList.forEach((singlePopup) => {
-  singlePopup.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(singlePopup);
-    }
-  });
-// обработка закрытия попапов по клику вне формы
   singlePopup.addEventListener('click', function (evt) {
     if (evt.target.classList.contains('popup_opened')) {
       closePopup(singlePopup);
     }
   });
-
 });
 
 // событие по клик на кнопке +
@@ -153,11 +145,13 @@ function addCard(newCard) {
 function openPopup(popup) {
   clearFormErrors(popup);
   popup.classList.add('popup_opened');
+  popup.addEventListener('keydown', closePopupOnEscape);
 }
 
 // закрыть любой попап
 function closePopup(popup){
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('keydown', closePopupOnEscape);
 }
 
 // заполнить попап редактирования профиля
@@ -216,3 +210,9 @@ function openElementPhotoPopup(name, link) {
 }
 
 
+// обработка закрытия попапов по эскейп
+function closePopupOnEscape(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(evt.target.closest('.popup'));
+  }
+}
