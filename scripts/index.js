@@ -1,5 +1,9 @@
+import { Card }  from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
 
 /// Обработчики на основной странице
+
 const popup = document.querySelector('#profileEditPopup');
 // событие по клик на кнопке редактирования профиля
 const editButton = document.querySelector('.profile__edit-button');
@@ -95,45 +99,16 @@ function loadDefaultCards() {
   ];
 
   initialCards.forEach(function (item){
-    addCard(createCard(item.name, item.link));
+
+ // Добавление карточки
+    addCard(createCard(item));
   });
 
 }
 
-// Создение новой карточки
-function createCard(name, link) {
-
-  // выбираем шаблон
-  const cardTemplate = document.querySelector('#card').content;
-
-  // клонируем шаблон
-  const newCard = cardTemplate.querySelector('.element').cloneNode(true);
-
-  // Заполняем елемент данными
-  const elementPhoto = newCard.querySelector('.element__photo');
-  elementPhoto.alt = name;
-  elementPhoto.src = link;
-
-  const elementText = newCard.querySelector('.element__text');
-  elementText.innerText = name;
-
-  // обработчики для новоого элемента-карточки
-  const deleteElementButton = newCard.querySelector('.element__delete');
-  deleteElementButton.addEventListener('click', function (event) {
-    deleteElement(event.target.closest('.element'));
-  });
-
-  elementPhoto.addEventListener('click', function () {
-    openElementPhotoPopup(name, link);
-  });
-
-  const likeElementButton = newCard.querySelector('.element__like');
-  likeElementButton.addEventListener('click', function (event) {
-    likeElement(event.target);
-  });
-
-  return newCard;
-
+function createCard(data) {
+  const newCard = new Card(data,'#card')
+return newCard.generateCard();
 }
 // добляем новый элемент в начало списка
 function addCard(newCard) {
@@ -142,8 +117,8 @@ function addCard(newCard) {
 }
 
 // открыть любой попап
-function openPopup(popup) {
-  clearFormErrors(popup);
+export function openPopup(popup) {
+  //clearFormErrors(popup);
   popup.classList.add('popup_opened');
   popup.addEventListener('keydown', closePopupOnEscape);
 }
@@ -179,34 +154,16 @@ function clearAddPopup(){
   // сброс предыдущих значений полей попапа
   popupAddPlaceName.value = '';
   popupAddPlaceLink.value = '';
+
+  //Сброс ошибок валидации
+  addPlacePopupFormValidator.clearFormErrors();
+
 }
 
 // сохранить и добавить новый элемент-картинку, закрыть попап
 function saveAddPlacePopup(){
   addCard(createCard(popupAddPlaceName.value, popupAddPlaceLink.value));
   closePopup(addPlacePopup);
-}
-
-// удалить карточку
-function deleteElement(cardToDelete) {
-  cardToDelete.remove();
-}
-
-// Лайкнуть карточку
-function likeElement(item) {
-  item.classList.toggle('element__like_active');
-  }
-
-
-// Открыть popup с фото карточки
-const elementViewPopup = document.querySelector('#elementViewPopup');
-const popupImgSrc = elementViewPopup.querySelector('.popup__image');
-const popupImgCaption = elementViewPopup.querySelector('.popup__caption');
-function openElementPhotoPopup(name, link) {
-  popupImgSrc.src = link;
-  popupImgCaption.textContent = name;
-
-  openPopup(elementViewPopup);
 }
 
 
@@ -216,3 +173,27 @@ function closePopupOnEscape(evt) {
     closePopup(evt.target.closest('.popup'));
   }
 }
+
+// Создания валидаторов для всех форм
+const settings =
+  {
+    formSelector: '.popup__form',  // форма
+    inputSelector: '.popup__field',  // инпут
+    submitButtonSelector: '.popup__save',   // кнопка
+    inactiveButtonClass: 'popup__save_inactive',  // модификатор неактивной кнопки
+    inputErrorClass: 'popup__field_with-error',  // инпут с ошибкой (подчеркивание)
+  }
+
+// Достаем формы из попапов
+const profileEditPopupForm = profileEditPopup.querySelector(settings.formSelector);
+const addPlacePopupForm = addPlacePopup.querySelector(settings.formSelector);
+
+// Создаем валидаторы формам
+const profileEditPopupFormValidator = new FormValidator(settings, profileEditPopupForm);
+const addPlacePopupFormValidator = new FormValidator(settings, addPlacePopupForm);
+
+// Активируем валидаторы
+profileEditPopupFormValidator.enableValidation();
+addPlacePopupFormValidator.enableValidation();
+
+
