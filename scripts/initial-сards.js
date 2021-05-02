@@ -1,5 +1,4 @@
-export function loadDefaultCardsData() {
-  const initialCardsData = [
+export const initialCardsData = [
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -25,6 +24,3 @@ export function loadDefaultCardsData() {
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-
-  return initialCardsData;
-}

@@ -22,7 +22,6 @@ export class Card {
     this._link = data.link;
   }
 
-
    // функция устанавливает слушателей событий
   _setEventListeners(){
     // обработчики для элемента-карточки
@@ -58,14 +57,19 @@ export class Card {
     openPopup(elementViewPopup);
   }
 
-
-  // функция создает карточку для отдачи внаружу
-  generateCard() {
+  // Поиск и клонирование шаблона карточки
+  _getTemplate()  {
     // выбираем шаблон
     const cardTemplate = document.querySelector(this._cardSelector).content;
     // клонируем шаблон
     this._cardObj = cardTemplate.querySelector('.element').cloneNode(true);
+  }
 
+  // функция создает карточку для отдачи внаружу
+  generateCard() {
+
+    // Запрос шаблона
+    this._getTemplate()
 
     // Заполняем елемент данными
     this._elementPhoto = this._cardObj.querySelector('.element__photo');

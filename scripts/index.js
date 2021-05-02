@@ -1,6 +1,6 @@
 import { Card }  from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import { loadDefaultCardsData } from "./initial-сards.js";
+import { initialCardsData } from "./initial-сards.js";
 
 /// Обработчики на основной странице
 
@@ -71,9 +71,7 @@ loadDefaultCards();
 
 // Загрузка 6ти предустановленных карточек
 function loadDefaultCards() {
-  const initialCards = loadDefaultCardsData();
-  initialCards.forEach(function (item){
-
+  initialCardsData.forEach(function (item){
  // Добавление карточки
     addCard(createCard(item));
   });
