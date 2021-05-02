@@ -20,19 +20,8 @@ export class Card {
     this._cardSelector = cardSelector;
     this._name = data.name;
     this._link = data.link;
-    this._cardObj = this._getTemplate(this._cardSelector);
-    this._elementPhoto = this._cardObj.querySelector('.element__photo');
-    this._likeElementButton = this._cardObj.querySelector('.element__like');
-    this._setEventListeners();
   }
 
-  // функция находит и клонирует шаблон, заполняет новый объект версткой
-  _getTemplate() {
-    // выбираем шаблон
-    const cardTemplate = document.querySelector(this._cardSelector).content;
-    // клонируем шаблон
-    return cardTemplate.querySelector('.element').cloneNode(true);
-  }
 
    // функция устанавливает слушателей событий
   _setEventListeners(){
@@ -41,9 +30,8 @@ export class Card {
     const deleteElementButton = this._cardObj.querySelector('.element__delete');
     deleteElementButton.addEventListener('click', () => this._deleteElement());
 
+
     this._elementPhoto.addEventListener('click', () => this._openCardPreview());
-
-
     this._likeElementButton.addEventListener('click', () => this._likeElement());
 
   }
@@ -73,12 +61,24 @@ export class Card {
 
   // функция создает карточку для отдачи внаружу
   generateCard() {
+    // выбираем шаблон
+    const cardTemplate = document.querySelector(this._cardSelector).content;
+    // клонируем шаблон
+    this._cardObj = cardTemplate.querySelector('.element').cloneNode(true);
+
+
     // Заполняем елемент данными
+    this._elementPhoto = this._cardObj.querySelector('.element__photo');
+    this._likeElementButton = this._cardObj.querySelector('.element__like');
+
     this._elementPhoto.alt = this._name;
     this._elementPhoto.src = this._link;
 
     const elementText = this._cardObj.querySelector('.element__text');
     elementText.innerText = this._name;
+
+    // Установку листнеров перенес из конструктора, так как при ревью попросили _cardObj не создавать в конструкторе
+    this._setEventListeners();
 
     return this._cardObj;
   }

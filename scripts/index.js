@@ -1,15 +1,15 @@
 import { Card }  from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-
+import { loadDefaultCardsData } from "./initial-сards.js";
 
 /// Обработчики на основной странице
 
-const popup = document.querySelector('#profileEditPopup');
+const profileEditPopup = document.querySelector('#profileEditPopup');
 // событие по клик на кнопке редактирования профиля
 const editButton = document.querySelector('.profile__edit-button');
 editButton.addEventListener('click', function () {
   fillProfileEditPopup();
-  openPopup(popup);
+  openPopup(profileEditPopup);
 });
 
 // обработка закрытия попапов по клику вне формы
@@ -33,8 +33,8 @@ addButton.addEventListener('click', function () {
 
 /// Общие события для всех попапов
 // крестик закрыти попапа, добавляется на все попапы по очереди
-const closePopupButton = document.querySelectorAll('.popup__close');
-closePopupButton.forEach(function (item) {
+const closePopupButtons = document.querySelectorAll('.popup__close');
+closePopupButtons.forEach(function (item) {
  item.addEventListener('click', function (event) {
     const popup = event.target.closest('.popup');
     closePopup(popup);
@@ -71,33 +71,7 @@ loadDefaultCards();
 
 // Загрузка 6ти предустановленных карточек
 function loadDefaultCards() {
-  const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
-
+  const initialCards = loadDefaultCardsData();
   initialCards.forEach(function (item){
 
  // Добавление карточки
@@ -118,15 +92,14 @@ function addCard(newCard) {
 
 // открыть любой попап
 export function openPopup(popup) {
-  //clearFormErrors(popup);
   popup.classList.add('popup_opened');
-  popup.addEventListener('keydown', closePopupOnEscape);
+  document.addEventListener('keydown', closePopupOnEscape);
 }
 
 // закрыть любой попап
 function closePopup(popup){
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('keydown', closePopupOnEscape);
+  document.removeEventListener('keydown', closePopupOnEscape);
 }
 
 // заполнить попап редактирования профиля
@@ -137,10 +110,12 @@ const jobInPopup = document.querySelector('#popupProfileJob');
 function fillProfileEditPopup(){
   nameInPopup.value = nameForEdit.textContent;
   jobInPopup.value = jobForEdit.textContent;
+
+  //Сброс предыдущих ошибок валидации
+  profileEditPopupFormValidator.clearFormErrors();
 }
 
 // сохранить и закрыть попап редактирования профиля
-const profileEditPopup = document.querySelector('#profileEditPopup');
 function saveProfileEditPopup(){
   nameForEdit.textContent = nameInPopup.value;
   jobForEdit.textContent = jobInPopup.value;
@@ -148,21 +123,20 @@ function saveProfileEditPopup(){
 }
 
 // очистить попап добавления элемента-картинки
-const popupAddPlaceName = document.querySelector('#popupAddPlaceName');
-const popupAddPlaceLink = document.querySelector('#popupAddPlaceLink');
+
 function clearAddPopup(){
   // сброс предыдущих значений полей попапа
-  popupAddPlaceName.value = '';
-  popupAddPlaceLink.value = '';
-
+  addPlacePopupForm.reset();
   //Сброс ошибок валидации
   addPlacePopupFormValidator.clearFormErrors();
 
 }
 
 // сохранить и добавить новый элемент-картинку, закрыть попап
+const popupAddPlaceName = document.querySelector('#popupAddPlaceName');
+const popupAddPlaceLink = document.querySelector('#popupAddPlaceLink');
 function saveAddPlacePopup(){
-  addCard(createCard(popupAddPlaceName.value, popupAddPlaceLink.value));
+  addCard(createCard({name: popupAddPlaceName.value, link: popupAddPlaceLink.value}));
   closePopup(addPlacePopup);
 }
 
@@ -170,11 +144,11 @@ function saveAddPlacePopup(){
 // обработка закрытия попапов по эскейп
 function closePopupOnEscape(evt) {
   if (evt.key === 'Escape') {
-    closePopup(evt.target.closest('.popup'));
+    closePopup(document.querySelector(".popup_opened"));
   }
 }
 
-// Создания валидаторов для всех форм
+// Настройки для валидаторов
 const settings =
   {
     formSelector: '.popup__form',  // форма

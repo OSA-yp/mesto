@@ -29,64 +29,66 @@ export class FormValidator {
     this._formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-      this._inputList.forEach((popupField) => {
+    // обработчик для ввода
+    this._inputList.forEach((popupField) => {
       popupField.addEventListener('input', () => this._checkField(popupField));
+
       // установка состояния кнопки формы по-умолчанию
-      this._toggleButtonState(this._inputList, this._buttonElement, this._settings.inactiveButtonClass);
+      this._toggleButtonState();
     });
   }
 
   // Проверка отдельного поля по событию и переключение кнопки
   _checkField(popupField){
-    this._checkInputValidity(this._formElement, popupField, this._settings.inputErrorClass);
-    this._toggleButtonState(this._inputList, this._buttonElement, this._settings.inactiveButtonClass);
+    this._checkInputValidity(popupField);
+    this._toggleButtonState();
   }
 
   // Проверка валидности отдельного input
-  _checkInputValidity(formElement, inputElement, inputErrorClass) {
+  _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      this._showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass);
+      this._showInputError(inputElement);
     } else {
-      this._hideInputError(formElement, inputElement, inputErrorClass);
+      this._hideInputError(inputElement);
     }
   }
 
   // Показать спан с ошибкой
-  _showInputError(formElement, inputElement, errorMessage, inputErrorClass) {
-    const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
-    errorElement.textContent = errorMessage;
-    inputElement.classList.add(inputErrorClass);
+  _showInputError(inputElement) {
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}Error`);
+    errorElement.textContent = inputElement.validationMessage;
+    inputElement.classList.add(this._settings.inputErrorClass);
   }
 
   // Скрыть спан с ошибкой
-  _hideInputError(formElement, inputElement, inputErrorClass) {
-    const errorElement = formElement.querySelector(`#${inputElement.id}Error`);
-    inputElement.classList.remove(inputErrorClass);
+  _hideInputError(inputElement) {
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}Error`);
+    inputElement.classList.remove(this._settings.inputErrorClass);
     errorElement.textContent = '';
   }
 
   // Переключение состояния кнопки вкл-выкл
-  _toggleButtonState(inputList, buttonElement, inactiveButtonClass){
-    if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(inactiveButtonClass);
+  _toggleButtonState(){
+    if (this._hasInvalidInput(this._inputList)) {
+      this._buttonElement.classList.add(this._settings.inactiveButtonClass);
     } else {
-      buttonElement.classList.remove(inactiveButtonClass);
+      this._buttonElement.classList.remove(this._settings.inactiveButtonClass);
     }
   }
 
   // Проверка общего статуса валидности по всем полям
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput() {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
-
 
 // Сброс сообщений об ошибках на форме (например при открытии)
 // второй публичный метод нужен для сброса ошибок при открытии формы
  clearFormErrors() {
       this._inputList.forEach((inputElement) => {
-      this._hideInputError(this._formElement, inputElement, this._settings.inputErrorClass)
+        this._hideInputError(inputElement)
     });
+      this._toggleButtonState()
   }
 }
