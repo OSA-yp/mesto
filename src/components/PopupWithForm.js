@@ -15,6 +15,7 @@ export class PopupWithForm extends Popup{
     //this._popupElement
     this._submitHandler = submitHandler;
     this.form = this._popupElement.querySelector(settings.formSelector);
+    //this.formValidator = formValidator;
   }
 
   //  собирает данные всех полей формы
@@ -42,7 +43,7 @@ export class PopupWithForm extends Popup{
 
     // должна ещё и сбрасываться
     this.form.reset();
-
+    //this.formValidator.clearFormErrors(); // сброс ошибков в валидаторе
   }
 
 }

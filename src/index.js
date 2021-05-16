@@ -9,7 +9,7 @@ import {settings} from "./utils/settings";
 import {Section} from "./components/Section";
 
 // Информация о пользователе
-const userInfo = new UserInfo( settings.userNameSelector ,settings.userJobSelector);
+const userInfo = new UserInfo(settings.userNameSelector ,settings.userJobSelector);
 
 // Попап редактирования профиля
 const profileEditPopup = new PopupWithForm(settings.profileEditPopupSelector, profileEditFormSubmitHandler);
@@ -42,10 +42,10 @@ function profileEditFormSubmitHandler (evt, data) {
 }
 
 // обработчик сабмита формы добавления карточки
-function addPlaceFormSubmitHandler (evt) {
+function addPlaceFormSubmitHandler (evt, data) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   if (!addPlacePopupFormValidator.hasInvalidInput()) { // проверяем, что на форме нет ошибок
-    saveAddPlacePopup();  // закрываем попап с сохранением
+    saveAddPlacePopup(data);  // закрываем попап с сохранением
   }
 }
 
@@ -87,10 +87,8 @@ function saveProfileEditPopup(data){
 }
 
 // сохранить и добавить новый элемент-картинку, закрыть попап
-const popupAddPlaceName = document.querySelector('#popupAddPlaceName');
-const popupAddPlaceLink = document.querySelector('#popupAddPlaceLink');
-function saveAddPlacePopup(){
-  sectionWithCards.addItem(createCard({name: popupAddPlaceName.value, link: popupAddPlaceLink.value}));
+function saveAddPlacePopup(data){
+  sectionWithCards.addItem(createCard({name: data.name, link: data.link}));
   addPlacePopup.close();
 }
 
