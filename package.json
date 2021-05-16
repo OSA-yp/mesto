@@ -1,0 +1,39 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "## Описание Это одностраничный сайт, посвященный различным местам в России. Это результат проектной работы курса по web разработке от [Яндекс.Практикума](https://praktikum.yandex.ru/). Сайт позволяет менять профиль, по умолчанию представлены шесть фото из разных регионов России. Имеется возможность произвольно добавлять и удалять карточки мест, формы реализованы с валидацией полей. Кроме этого, имеется возможность ставить и снимать лайки с отдельных карточек.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OSA-yp/mesto.git"
+  },
+  "author": "OSA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OSA-yp/mesto/issues"
+  },
+  "homepage": "https://github.com/OSA-yp/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^5.2.4",
+    "cssnano": "^5.0.2",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "postcss-loader": "^5.3.0",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "core-js": "^3.12.1"
+  }
+}

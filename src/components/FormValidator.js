@@ -12,16 +12,20 @@
 // YES - Содержать приватные методы для обработки формы;
 // YES - «Содержать публичный метод enableValidation — вызовите его после создания экземпляра класса».
 
+// Спринт 8:
+// settings  вынесены как внешние общие данные
+
+import {settings} from "../utils/settings";
+
 export class FormValidator {
-  constructor(settings, formElement) {
-    this._settings = settings;
+  constructor(formElement) {
     this._formElement = formElement;
 
     // Ищем кнопку формы
-    this._buttonElement = this._formElement.querySelector(this._settings.submitButtonSelector);
+    this._buttonElement = this._formElement.querySelector(settings.submitButtonSelector);
 
     // все поля ввода формы
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
+    this._inputList = Array.from(this._formElement.querySelectorAll(settings.inputSelector));
   }
 
   enableValidation() {
@@ -57,27 +61,27 @@ export class FormValidator {
   _showInputError(inputElement) {
     const errorElement = this._formElement.querySelector(`#${inputElement.id}Error`);
     errorElement.textContent = inputElement.validationMessage;
-    inputElement.classList.add(this._settings.inputErrorClass);
+    inputElement.classList.add(settings.inputErrorClass);
   }
 
   // Скрыть спан с ошибкой
   _hideInputError(inputElement) {
     const errorElement = this._formElement.querySelector(`#${inputElement.id}Error`);
-    inputElement.classList.remove(this._settings.inputErrorClass);
+    inputElement.classList.remove(settings.inputErrorClass);
     errorElement.textContent = '';
   }
 
   // Переключение состояния кнопки вкл-выкл
   _toggleButtonState(){
-    if (this._hasInvalidInput(this._inputList)) {
-      this._buttonElement.classList.add(this._settings.inactiveButtonClass);
+    if (this.hasInvalidInput(this._inputList)) {
+      this._buttonElement.classList.add(settings.inactiveButtonClass);
     } else {
-      this._buttonElement.classList.remove(this._settings.inactiveButtonClass);
+      this._buttonElement.classList.remove(settings.inactiveButtonClass);
     }
   }
 
   // Проверка общего статуса валидности по всем полям
-  _hasInvalidInput() {
+  hasInvalidInput() {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });

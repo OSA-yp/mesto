@@ -5,21 +5,27 @@
 // YES - содержит приватные методы для каждого обработчика;
 // YES - содержит один публичный метод, который возвращает полностью работоспособный и наполненный данными элемент карточки.
 
+// Спринт 7
 // Класс Card должен:
 // YES - Принимать в конструктор ссылки на изображение и текст;
 // YES - Принимать в конструктор селектор для template-элемента с шаблоном разметки;
 // YES - Обладать приватными методами, которые установят слушателей событий, обработают клики, подготовят карточку к публикации;
 // YES - Обладать публичным методом, который вернёт готовую разметку, с установленными слушателями событий.
 
+// import { openPopup } from "../index"; // связь из спринта 7
 
-import { openPopup } from "./index.js";
+// Спринт 8
+// YES - Свяжите класс Card c попапом.
+// YES - Сделайте так, чтобы Card принимал в конструктор функцию handleCardClick.
+// YES - Эта функция должна открывать попап с картинкой при клике на карточку.
 
 
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._cardSelector = cardSelector;
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
   }
 
    // функция устанавливает слушателей событий
@@ -30,7 +36,7 @@ export class Card {
     deleteElementButton.addEventListener('click', () => this._deleteElement());
 
 
-    this._elementPhoto.addEventListener('click', () => this._openCardPreview());
+    this._elementPhoto.addEventListener('click', () => this._handleCardClick(this._name, this._link));
     this._likeElementButton.addEventListener('click', () => this._likeElement());
 
   }
@@ -45,19 +51,7 @@ export class Card {
     this._likeElementButton.classList.toggle('element__like_active');
   }
 
-  // Открыть превью карточки
-  _openCardPreview() {
-    const elementViewPopup = document.querySelector('#elementViewPopup');
-    const popupImgSrc = elementViewPopup.querySelector('.popup__image');
-    const popupImgCaption = elementViewPopup.querySelector('.popup__caption');
-
-    popupImgSrc.src = this._link;
-    popupImgCaption.textContent = this._name;
-
-    openPopup(elementViewPopup);
-  }
-
-  // Поиск и клонирование шаблона карточки
+   // Поиск и клонирование шаблона карточки
   _getTemplate()  {
     // выбираем шаблон
     const cardTemplate = document.querySelector(this._cardSelector).content;

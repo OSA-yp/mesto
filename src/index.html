@@ -7,22 +7,22 @@
   <meta name="keywords" content="Фото, места, туризм, природа, фотографии, коллекция, путешествия, Россия">
   <meta name="author" content="Сергей Окунь">
   <title>Mesto Russia</title>
-  <link rel="stylesheet" href="./pages/index.css">
-  <!-- версия от 02.05.2021 12-15 -->
+<!--  <link rel="stylesheet" href="../pages/index.css">-->
+  <!-- версия от 16.05.2021 17-10 -->
 </head>
 <body  class="body">
   <div class="page">
 
     <!-- Шапка сайта-->
     <header class="header">
-      <img class="header__logo" src="./images/header/__logo.svg" alt="Логотип">
+      <img class="header__logo" src="<%=require('./images/header/__logo.svg')%>" alt="Логотип">
     </header>
 
     <!-- Основной контент -->
     <main class="content">
       <!-- Профиль пользователя -->
       <section class="profile">
-        <img class="profile__avatar" src="./images/profile/__avatar.png" alt="Аватар">
+        <img class="profile__avatar" src="<%=require('./images/profile/__avatar.png')%>" alt="Аватар">
         <div class="profile__user">
           <!-- profile__edit - дополнительная обертка для выравнивания элементов на 320px -->
           <div class="profile__edit">
@@ -98,7 +98,7 @@
   <template id="card">
     <li >
       <figure class="element">
-        <button class="element__delete transparency" type="button"><img class="element__delete transparency"  src="./images/elements/__trash.svg" alt="trash"></button>
+        <button class="element__delete transparency" type="button"><img class="element__delete transparency" src=<%=require('./images/elements/__trash.svg')%> alt="trash"></button>
         <img class="element__photo" src="https://i.pinimg.com/736x/8b/f6/6b/8bf66b6e0bfb8d2536c40a62cf6091bd.jpg" alt="Рыба Окунь">
         <figcaption class="element__caption">
           <p class="element__text"></p>
@@ -108,6 +108,6 @@
     </li>
   </template>
 
-  <script type="module" src="./scripts/index.js"></script>
+<!--  <script type="module" src="index.js"></script>-->
 </body>
 </html>
