@@ -1,9 +1,3 @@
-// YES - наследует от Popup. Этот класс должен
-// YES -  перезаписывать родительский метод open. В методе open класса PopupWithImage нужно
-// ??? - вставлять в попап картинку и
-// YES - атрибут src изображения и
-// YES - подпись к картинке.
-
 import {Popup} from "./Popup";
 
 export class PopupWithImage extends Popup {
@@ -16,6 +10,7 @@ export class PopupWithImage extends Popup {
     const popupImgCaption = this._popupElement.querySelector('.popup__caption');
 
     popupImgSrc.src = url;
+    popupImgSrc.alt = text;
     popupImgCaption.textContent = text;
     super.open();
 

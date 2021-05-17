@@ -1,12 +1,12 @@
-import './pages/index.css';
-import {Card}  from "./components/Card.js";
-import {FormValidator} from "./components/FormValidator.js";
-import {initialCardsData} from "./utils/initial-сards.js";
-import {PopupWithImage} from "./components/PopupWithImage";
-import {UserInfo} from "./components/UserInfo";
-import {PopupWithForm} from "./components/PopupWithForm";
-import {settings} from "./utils/settings";
-import {Section} from "./components/Section";
+import './index.css';
+import {Card}  from "../components/Card.js";
+import {FormValidator} from "../components/FormValidator.js";
+import {initialCardsData} from "../utils/initial-сards.js";
+import {PopupWithImage} from "../components/PopupWithImage";
+import {UserInfo} from "../components/UserInfo";
+import {PopupWithForm} from "../components/PopupWithForm";
+import {settings} from "../utils/settings";
+import {Section} from "../components/Section";
 
 // Информация о пользователе
 const userInfo = new UserInfo(settings.userNameSelector ,settings.userJobSelector);
@@ -93,10 +93,15 @@ function saveAddPlacePopup(data){
 }
 
 // Создаем валидаторы формам
-const profileEditPopupFormValidator = new FormValidator(profileEditPopup.form);
-const addPlacePopupFormValidator = new FormValidator(addPlacePopup.form);
+const profileEditPopupFormValidator = new FormValidator(settings, profileEditPopup.form);
+const addPlacePopupFormValidator = new FormValidator(settings, addPlacePopup.form);
 
 // Активируем валидаторы
 profileEditPopupFormValidator.enableValidation();
 addPlacePopupFormValidator.enableValidation();
+
+// Оповещаем попап о валидаторе его формы
+profileEditPopup.setFormValidator(profileEditPopupFormValidator);
+addPlacePopup.setFormValidator(addPlacePopupFormValidator)
+
 

@@ -1,11 +1,3 @@
-// YES - Создайте класс PopupWithForm, который наследует от Popup. Этот класс:
-// YES - Кроме селектора попапа принимает в конструктор колбэк сабмита формы.
-// YES - Содержит приватный метод _getInputValues, который собирает данные всех полей формы.
-// YES - Перезаписывает родительский метод setEventListeners.
-// YES - Метод setEventListeners класса PopupWithForm должен не только добавлять обработчик клика иконке закрытия, но и добавлять обработчик сабмита формы.
-// YES - Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
-
-
 import {Popup} from "./Popup";
 import {settings} from "../utils/settings";
 
@@ -15,7 +7,7 @@ export class PopupWithForm extends Popup{
     //this._popupElement
     this._submitHandler = submitHandler;
     this.form = this._popupElement.querySelector(settings.formSelector);
-    //this.formValidator = formValidator;
+    this._formValidator = null;
   }
 
   //  собирает данные всех полей формы
@@ -43,7 +35,11 @@ export class PopupWithForm extends Popup{
 
     // должна ещё и сбрасываться
     this.form.reset();
-    //this.formValidator.clearFormErrors(); // сброс ошибков в валидаторе
+    this._formValidator.clearFormErrors();
   }
 
+  // Утанавливает связь с валидотором экземпляра формы
+  setFormValidator(formValidator){
+    this._formValidator = formValidator;
+  }
 }
