@@ -58,8 +58,10 @@ export class FormValidator {
   // Переключение состояния кнопки вкл-выкл
   _toggleButtonState(){
     if (this.hasInvalidInput()) {
+      this._buttonElement.disabled = true;
       this._buttonElement.classList.add(this.settings.inactiveButtonClass);
     } else {
+      this._buttonElement.disabled = false;
       this._buttonElement.classList.remove(this.settings.inactiveButtonClass);
     }
   }

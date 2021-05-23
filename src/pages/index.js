@@ -124,37 +124,31 @@ function clickOnCardHandler(text, url) {
   popupWithImage.open(text, url)
 }
 
-let currentUserId = null;
-// Первичное получение данных о пользователе
-api.downloadUserInfo()
-  .then((result) => {
-    userInfo.setUserInfo(result);
-    currentUserId = result._id
-  })
-  .catch((err) => {
-    console.error(err);
-  });
 
-// Инициализация страницы
+// Инициализация страницы & Первичное получение данных о пользователе
+let currentUserId = null;
 const sectionWithCards = new Section(createCard, settings.cardsContainerSelector);
-api.downloadInitialCards()
-  .then((result) => {
-    sectionWithCards.initialRender(result);
+
+Promise.all([api.downloadUserInfo(), api.downloadInitialCards()])
+  .then(([ userData, cards ]) => {
+    userInfo.setUserInfo(userData);
+    currentUserId = userData._id;
+    sectionWithCards.initialRender(cards);
   })
   .catch((err) => {
-    console.error(err);
+    console.error(`При инициализирующем запросе ${err}`);
   });
-//
 
 // Поставить лайк на сервере, возващает признак успеха
 function likeOnServer(card){
   api.addCardLike(card.data)
       .then((result) => {
         card.data = result;
+        card.like();
         card.renewLikeCount();
       })
       .catch((err) => {
-        console.error(err);
+        console.error(`При попытке поставить лайк карточке ${card.data._id} произошла ошибка: ${err}`);
         return false;
       });
 }
@@ -164,11 +158,12 @@ function unLikeOnServer(card){
   return api.removeCardLike(card.data)
     .then((result) => {
       card.data = result;
+      card.unLike();
       card.renewLikeCount();
       return true;
     })
     .catch((err) => {
-      console.error(err);
+      console.error(`При попытке убрать лайк карточке ${card.data._id} произошла ошибка: ${err}`);
       return false;
     });
 }
@@ -181,15 +176,7 @@ function createCard(data) {
   if (currentUserId === data.owner._id) {
     cardRemover =  catchCardToDelete;
   }
-  const newCard = new Card(data,settings.cardSelector, clickOnCardHandler, cardRemover, likeOnServer, unLikeOnServer)
-
-  // ищем свой лайк у карточки, чтобы закрасить сердечко
-  data.likes.forEach((like)=>{
-    if (like._id === currentUserId) {
-      newCard.isLiked = true
-    }
-
-  })
+  const newCard = new Card(data,settings.cardSelector, clickOnCardHandler, cardRemover, likeOnServer, unLikeOnServer, currentUserId)
   return newCard.generateCard();
 }
 
@@ -232,21 +219,17 @@ function saveAddPlacePopup(data){
   api.uploadNewCard(data)
     .then((result) => {
         sectionWithCards.addItem(createCard(result))
+        addPlacePopup.close();
     })
     .catch((err) => {
-      console.error(err);
+      console.error(`Произошла ошибка: ${err}`);
     });
-
-  // sectionWithCards.addItem(createCard({name: data.name, link: data.link}));
-  addPlacePopup.close();
 }
 
 // Создаем валидаторы формам
 const profileEditPopupFormValidator = new FormValidator(settings, profileEditPopup.form);
 const addPlacePopupFormValidator = new FormValidator(settings, addPlacePopup.form);
 const avatarEditPopupFormValidator = new FormValidator(settings, avatarEditPopup.form);
-
-
 
 // Активируем валидаторы
 profileEditPopupFormValidator.enableValidation();

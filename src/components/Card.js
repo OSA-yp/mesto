@@ -1,6 +1,6 @@
 // Класс Card, который создаёт карточку с текстом и ссылкой на изображение
 export class Card {
-  constructor(data, cardSelector, handleCardClick, cardRemover, serverLiker, serverUnLiker) {
+  constructor(data, cardSelector, handleCardClick, cardRemover, serverLiker, serverUnLiker, currentUserId) {
     this._cardSelector = cardSelector;
     this.data = data;
     this._handleCardClick = handleCardClick;
@@ -8,6 +8,7 @@ export class Card {
     this._likeOnServer = serverLiker;
     this._unLikeOnServer = serverUnLiker;
     this.isLiked = false;
+    this._currentUserId = currentUserId;
   }
 
    // функция устанавливает слушателей событий
@@ -24,11 +25,9 @@ export class Card {
       // если карточка уже с лайком, то убираем, если нет, то лайкаем, но только при успешной обработке на сервере
       if (this.isLiked) {
         this._unLikeOnServer(this)
-        this._unLike()
       }
       else {
         this._likeOnServer(this)
-        this._like()
       }
     });
 
@@ -46,13 +45,13 @@ export class Card {
   }
 
   // Лайкнуть карточку
-  _like() {
+  like() {
       this.isLiked = true;
       this._switchLikeSign();
   }
 
   // Убрать лайк с карточки
-  _unLike(){
+  unLike(){
     this.isLiked = false;
     this._switchLikeSign();
   }
@@ -65,8 +64,6 @@ export class Card {
     else {
       this._likeElementButton.classList.remove('element__like_active');
     }
-
-
   }
 
    // Поиск и клонирование шаблона карточки
@@ -97,6 +94,13 @@ export class Card {
     // При создании карточки обновляем количество лайков
     this.renewLikeCount()
 
+    // ищем свой лайк у карточки, чтобы закрасить сердечко
+    this.data.likes.forEach((like)=>{
+      if (like._id === this._currentUserId) {
+        this.isLiked = true
+      }
+
+    })
     // При создании выставляем нужное состояние лайка
     this._switchLikeSign()
 

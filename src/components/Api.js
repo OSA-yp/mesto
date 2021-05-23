@@ -4,30 +4,26 @@ export class Api {
     this._headers = options.headers;
   }
 
+  // Универсальный обработчик прописа
+  _handleResponse(response) {
+    if (response.ok) {
+      return response.json();
+    }
+    return Promise.reject(`произошла ошибка: ${response.status}`)
+  }
+
   downloadInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`При инициализирующем запросе карточек произошла ошибка: ${res.status}`);
-      });
+      .then(this._handleResponse);
   }
 
   downloadUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`При запросе данных о пользователе произошла ошибка: ${res.status}`);
-      });
+      .then(this._handleResponse);
   }
 
   // Сохранить данные о пользователе на сервере
@@ -40,13 +36,7 @@ export class Api {
         about: userData.about
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`При передаче данных о пользователе произошла ошибка: ${res.status}`);
-      });
+      .then(this._handleResponse);
   }
 
   // Загрузить новую карточку на сервер
@@ -59,13 +49,7 @@ export class Api {
         link: cardData.link
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`При передаче данных новой карточки произошла ошибка: ${res.status}`);
-      });
+      .then(this._handleResponse);
   }
 
   // Удалить карточку с сервера
@@ -74,13 +58,7 @@ export class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`При удалении существующей карточки ${cardData._id} произошла ошибка: ${res.status}`);
-      });
+      .then(this._handleResponse);
   }
 
   // Добавить лайк карточке на сервере
@@ -89,13 +67,7 @@ export class Api {
       method: 'PUT',
       headers: this._headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`При попытке поставить лайк карточке ${cardData._id} произошла ошибка: ${res.status}`);
-      });
+      .then(this._handleResponse);
   }
 
   // Убрать лайк карточки на сервере
@@ -104,13 +76,7 @@ export class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`При попытке убрать лайк карточке ${cardData._id} произошла ошибка: ${res.status}`);
-      });
+      .then(this._handleResponse);
   }
 
   // Изменить аватар пользователя на сервере
@@ -122,13 +88,7 @@ export class Api {
         avatar: avatarURL
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`При обновлении аватара пользователя произошла ошибка: ${res.status}`);
-      });
+      .then(this._handleResponse);
   }
 
 
