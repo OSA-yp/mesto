@@ -1,0 +1,4 @@
+/* Стилизизация элемента profile__avatar-with-overlay */
+.profile__avatar-with-overlay {
+  position: relative;
+}

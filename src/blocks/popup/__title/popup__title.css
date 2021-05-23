@@ -1,6 +1,7 @@
 /* Стилизизация элемента popup__title */
 .popup__title {
-  margin: 34px 0 54px 36px;
+  /*margin: 34px 0 54px 36px;*/
+  margin: 34px 0 38px 36px;
 
   font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
   font-style: normal;

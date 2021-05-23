@@ -8,13 +8,13 @@ export class PopupWithForm extends Popup{
     this._submitHandler = submitHandler;
     this.form = this._popupElement.querySelector(settings.formSelector);
     this._formValidator = null;
+    this._inputs = [...this.form.querySelectorAll(settings.inputSelector)];
   }
 
   //  собирает данные всех полей формы
   _getInputValues(){
     const inputValues = {};
-    const inputs = [...this.form.querySelectorAll(settings.inputSelector)];
-    inputs.forEach(function(input){
+    this._inputs.forEach(function(input){
       inputValues[input.name] = input.value;
     });
     return inputValues
@@ -33,9 +33,11 @@ export class PopupWithForm extends Popup{
   close() {
     super.close();
 
-    // должна ещё и сбрасываться
-    this.form.reset();
-    this._formValidator.clearFormErrors();
+    // должна ещё и сбрасываться, если у неё есть поля
+    if (this._inputs.length !== 0){
+      this.form.reset();
+      this._formValidator.clearFormErrors();
+    }
   }
 
   // Утанавливает связь с валидотором экземпляра формы

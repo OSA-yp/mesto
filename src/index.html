@@ -8,7 +8,7 @@
   <meta name="author" content="Сергей Окунь">
   <title>Mesto Russia</title>
 <!--  <link rel="stylesheet" href="../pages/index.css">-->
-  <!-- версия от 17.05.2021 17-00 -->
+  <!-- версия от 23.05.2021 13-00 -->
 </head>
 <body  class="body">
   <div class="page">
@@ -22,7 +22,10 @@
     <main class="content">
       <!-- Профиль пользователя -->
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/profile/__avatar.png')%>" alt="Аватар">
+        <div class="profile__avatar-with-overlay">
+          <img class="profile__avatar" src="<%=require('./images/profile/__avatar.png')%>" alt="Аватар">
+          <div class="profile__overlay"></div>
+        </div>
         <div class="profile__user">
           <!-- profile__edit - дополнительная обертка для выравнивания элементов на 320px -->
           <div class="profile__edit">
@@ -56,8 +59,8 @@
          <span class="popup__field-error" id="popupProfileNameError"></span>
        </div>
        <div class="popup__field-and-error">
-          <input class="popup__field" id="popupProfileJob" type="text" value="Профессия" name ="job" required minlength="20" maxlength="200">
-          <span class="popup__field-error" id="popupProfileJobError"></span>
+          <input class="popup__field" id="popupProfileAbout" type="text" value="О пользователе" name ="about" required minlength="20" maxlength="200">
+          <span class="popup__field-error" id="popupProfileAboutError"></span>
        </div>
         <input class="popup__save" id="saveProfileEditPopup" type="submit" value="Сохранить">
         <button class="popup__close transparency" type="button"></button>
@@ -81,6 +84,32 @@
       </form>
     </div>
 
+
+    <!-- Форма запроса на удаление элемента-карточки -->
+    <div class="popup" id="removePlacePopup">
+      <form class="popup__form" name="removePlaceForm" id="removePlaceForm" novalidate>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <input class="popup__save" id="saveRemovePlacePopup" type="submit" value="Да">
+        <button class="popup__close transparency" type="button"></button>
+      </form>
+    </div>
+
+    <!-- Форма редактирования аватара -->
+    <div class="popup" id="avatarEditPopup">
+      <form class="popup__form" name="avatarEditForm" id="avatarEditForm" novalidate>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <div class="popup__field-and-error">
+          <input class="popup__field" id="avatarEditLink" type="url" placeholder="Ссылка на картинку" name ="link" required>
+          <span class="popup__field-error" id="avatarEditLinkError"></span>
+        </div>
+        <input class="popup__save" id="saveAvatarEditPopup" type="submit" value="Сохранить">
+        <button class="popup__close transparency" type="button"></button>
+      </form>
+    </div>
+
+
+
+
     <!-- Форма просмотра фотографии -->
     <div class="popup" id="elementViewPopup">
       <div class="popup__elementview">
@@ -102,7 +131,11 @@
         <img class="element__photo" src="https://i.pinimg.com/736x/8b/f6/6b/8bf66b6e0bfb8d2536c40a62cf6091bd.jpg" alt="Рыба Окунь">
         <figcaption class="element__caption">
           <p class="element__text"></p>
-          <button class="element__like transparency" type="button"></button>
+          <div class="element__like-sector">
+            <button class="element__like transparency" type="button"></button>
+            <p class="element__likes-count">7</p>
+          </div>
+
         </figcaption>
       </figure>
     </li>

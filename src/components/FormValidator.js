@@ -73,10 +73,21 @@ export class FormValidator {
 
 // Сброс сообщений об ошибках на форме (например при открытии)
 // второй публичный метод нужен для сброса ошибок при открытии формы
- clearFormErrors() {
+  clearFormErrors() {
       this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement)
     });
       this._toggleButtonState()
   }
+
+  loadingON(){
+    this._buttonElementDefaultValue = this._buttonElement.value;
+    this._buttonElement.value = 'Сохранение...';
+  }
+
+  loadingOff(){
+    this._buttonElement.value = this._buttonElementDefaultValue;
+  }
 }
+
+

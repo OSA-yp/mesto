@@ -6,6 +6,7 @@
   /* Размер грида по макету, объекты + поля между ними */
   grid-template-columns: 150px 336px auto;
   align-items: center;
+
 }
 
 

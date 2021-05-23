@@ -1,0 +1,15 @@
+/* Стилизизация элемента element__likes-count */
+.element__likes-count {
+  margin: 3px 20px 0 0;
+  padding: 0;
+  color: #000000;
+
+  font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+
+
+}

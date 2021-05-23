@@ -1,0 +1,5 @@
+/* Стилизизация элемента element__like-sector */
+.element__like-sector {
+  display: flex;
+  flex-direction: column;
+}
